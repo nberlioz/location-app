@@ -1,0 +1,39 @@
+name: Android CI - Build APK
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Récupération du code source
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Configuration de JDK 17 (recommandé pour Kotlin & Gradle récents)
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      # 3. Rendre le script Gradle exécutable
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      # 4. Compilation de l'APK en mode Release
+      - name: Build APK
+        run: ./gradlew assembleDebug --stacktrace
+
+      # 5. Sauvegarde de l'APK généré comme artefact téléchargeable
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: location-store-debug
+          path: app/build/outputs/apk/debug/app-debug.apk

@@ -1,0 +1,30 @@
+plugins {
+    // Applique le plugin à ce module (sans "version" ni "apply false")
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.example.locationapp' // Remplacez par votre package
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.locationapp" // Remplacez par votre package
+        minSdk 24
+        targetSdk 34
+        versionCode 2
+        versionName "2.0"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.gms:play-services-location:21.3.0'
+    implementation 'androidx.work:work-runtime:2.9.1'
+    implementation 'androidx.concurrent:concurrent-futures:1.2.0'
+    implementation 'com.google.guava:guava:33.2.1-android'
+}

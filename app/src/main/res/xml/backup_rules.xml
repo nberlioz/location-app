@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Exclut la base de données SQLite du backup automatique Google Cloud -->
+    <exclude domain="database" path="locations.db" />
+</full-backup-content>

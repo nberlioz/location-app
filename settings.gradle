@@ -1,0 +1,18 @@
+pluginManagement {
+    repositories {
+        google()                  // <-- INDISPENSABLE pour les plugins Android (com.android.application)
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()                  // <-- INDISPENSABLE pour les bibliothèques AndroidX / Google
+        mavenCentral()
+    }
+}
+
+rootProject.name = "MonApplicationCrypto"
+include(":app")
